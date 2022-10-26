@@ -6,11 +6,13 @@ using UnityEngine;
 public class MagnetManager : MonoBehaviour
 {
     List<MagnetCtrl> magnetCtrls = new List<MagnetCtrl>();
+    PlayerMagnet playerMagnet;
     // Start is called before the first frame update
     void Start()
     {
         magnetCtrls =  new List<MagnetCtrl>(GameObject.FindObjectsOfType<MagnetCtrl>());
         Debug.Log(magnetCtrls.Count);
+        playerMagnet = GameObject.FindObjectOfType<PlayerMagnet>();
     }
 
     // Update is called once per frame
@@ -26,6 +28,9 @@ public class MagnetManager : MonoBehaviour
         {
             for (int j = i + 1; j < magnetCtrls.Count; j++)
             {
+                if (magnetCtrls[i].transform.tag == "Player" && !playerMagnet.Find(magnetCtrls[j])) continue;
+                if (magnetCtrls[j].transform.tag == "Player" && !playerMagnet.Find(magnetCtrls[i])) continue;
+
                 Vector2 pos1 = magnetCtrls[i].transform.position;
                 Vector2 pos2 = magnetCtrls[j].transform.position;
                 float magnetPower = magnetCtrls[i].magnetPower * magnetCtrls[j].magnetPower;
