@@ -29,25 +29,18 @@ public class Player_Move : MonoBehaviour
 
         if (Input.GetButtonUp("Horizontal"))
         {
+            anim.SetBool("IsWalking", false);
             rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
         }
 
         //플레이어 바라보는 방향
         if (Input.GetButton("Horizontal"))
         {
+            anim.SetBool("IsWalking", true);
             spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
         }
 
 
-        //플레이어 달리는 애니메이션
-        if (Mathf.Abs(rigid.velocity.x) < 0.5f)
-        {
-            anim.SetBool("IsWalking", false);
-        }
-        else
-        {
-            anim.SetBool("IsWalking", true);
-        }
     }
 
     void FixedUpdate()

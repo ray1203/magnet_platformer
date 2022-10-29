@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Lift : MonoBehaviour
+{
+    private Vector3 startPos;
+    public Vector3 endPos;
+    private Vector3 desPos;
+    public float speed;
+    // Start is called before the first frame update
+    void Start()
+    {
+        startPos = transform.position;
+        desPos = endPos;
+    }
+    void FixedUpdate()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, desPos, Time.deltaTime * speed);
+
+        if (Vector2.Distance(transform.position, desPos) <= 0.05f)
+        {
+            if (desPos == endPos) desPos = startPos;
+            else desPos = endPos;
+        }
+    }
+}
