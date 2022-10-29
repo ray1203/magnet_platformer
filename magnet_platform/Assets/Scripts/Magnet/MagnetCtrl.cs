@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 public class MagnetCtrl : MonoBehaviour
 {
-    //true: N
-    //false: S
-    public bool magnetism;
+    //'n': N±Ø
+    //'s': S±Ø
+    public char magnetism;
     public float magnetPower = 1.0f;
     public Vector2 power = new Vector2(0, 0);
     private Rigidbody2D rb2D;

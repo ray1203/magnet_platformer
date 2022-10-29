@@ -30,8 +30,8 @@ public class ButtonObjCtrl : MonoBehaviour
             buttonTop.localScale = new Vector2(topScale.x,newScaleY);
             buttonTop.transform.localPosition = new Vector2(0, 0.25f + newScaleY / 2.0f);
             attachedMagnet.magnetPower = magnetPower;
-            if (attachedMagnet.magnetism) magnetSprite.color = Color.blue;
-            else magnetSprite.color = Color.red;
+            if (attachedMagnet.magnetism=='s') magnetSprite.color = Color.blue;
+            else if(attachedMagnet.magnetism=='n')magnetSprite.color = Color.red;
         }
         else
         {

@@ -12,7 +12,7 @@ public class MagnetManager : MonoBehaviour
     {
         magnetCtrls =  new List<MagnetCtrl>(GameObject.FindObjectsOfType<MagnetCtrl>());
         Debug.Log(magnetCtrls.Count);
-        playerMagnet = GameObject.FindObjectOfType<PlayerMagnet>();
+        playerMagnet = GameManager.instance.playerMagnet;
     }
 
     // Update is called once per frame
@@ -28,9 +28,10 @@ public class MagnetManager : MonoBehaviour
         {
             for (int j = i + 1; j < magnetCtrls.Count; j++)
             {
-                if (magnetCtrls[i].transform.tag == "Player" && !playerMagnet.Find(magnetCtrls[j])) continue;
-                if (magnetCtrls[j].transform.tag == "Player" && !playerMagnet.Find(magnetCtrls[i])) continue;
-
+                
+                if (magnetCtrls[i].transform.tag == "Player" && (!playerMagnet.Find(magnetCtrls[j])||!playerMagnet.active)) continue;
+                if (magnetCtrls[j].transform.tag == "Player" && (!playerMagnet.Find(magnetCtrls[i])||!playerMagnet.active)) continue;
+                if (magnetCtrls[i].magnetism==0 || magnetCtrls[j].magnetism==0) continue;
                 Vector2 pos1 = magnetCtrls[i].transform.position;
                 Vector2 pos2 = magnetCtrls[j].transform.position;
                 float magnetPower = magnetCtrls[i].magnetPower * magnetCtrls[j].magnetPower;
@@ -39,7 +40,6 @@ public class MagnetManager : MonoBehaviour
 
                 if (magnetCtrls[i].magnetism == magnetCtrls[j].magnetism)
                     dir = new Vector2(-dir.x, -dir.y);
-
 
                 powers[i] += new Vector2(dir.x * magnetPower / dist, dir.y * magnetPower / dist);
                 powers[j] += new Vector2(-dir.x * magnetPower / dist, -dir.y * magnetPower / dist);

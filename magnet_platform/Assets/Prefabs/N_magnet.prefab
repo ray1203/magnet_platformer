@@ -144,6 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ecefa06901414748882d1449e7153b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magnetism: 0
+  magnetism: 110
   magnetPower: 10
   power: {x: 0, y: 0}
