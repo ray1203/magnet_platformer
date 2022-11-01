@@ -11,7 +11,7 @@ public class Player_Move : MonoBehaviour
     private float maxSpeed;
     [SerializeField]
     private float jumpPower;
-
+    
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -57,12 +57,15 @@ public class Player_Move : MonoBehaviour
         if (rigid.velocity.y < 0)
         {
             Debug.DrawRay(rigid.position, 0.2f * Vector3.down, new Color(0, 1, 0));
+            Debug.DrawRay(rigid.position + new Vector2(0.4f, 0), 0.2f * Vector3.down, new Color(0, 1, 0));
+            Debug.DrawRay(rigid.position - new Vector2(0.4f, 0), 0.2f * Vector3.down, new Color(0, 1, 0));
+
 
             RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 0.2f, LayerMask.GetMask("Platform"));
-
-            if (rayHit.collider != null)
+            RaycastHit2D rayHitL = Physics2D.Raycast(rigid.position - new Vector2(0.4f, 0), Vector3.down, 0.2f, LayerMask.GetMask("Platform"));
+            RaycastHit2D rayHitR = Physics2D.Raycast(rigid.position + new Vector2(0.4f, 0), Vector3.down, 0.2f, LayerMask.GetMask("Platform"));
+            if (rayHit.collider != null || rayHitL.collider != null || rayHitR.collider != null)
             {
-                Debug.Log(rayHit.collider.name);
                 anim.SetBool("IsJumping", false);
             }
             //레이캐스트로 바닥감지 점프는 1번만
