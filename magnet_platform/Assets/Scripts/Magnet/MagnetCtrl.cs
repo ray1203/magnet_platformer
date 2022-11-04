@@ -17,7 +17,7 @@ public class MagnetCtrl : MonoBehaviour
         if (magnetism == 'N') magnetism = 'n';
         if (magnetism == 'S') magnetism = 's';
     }
-    void Update()
+    void FixedUpdate()
     {
         float newX = power.x * k;
         newX *= Time.deltaTime;

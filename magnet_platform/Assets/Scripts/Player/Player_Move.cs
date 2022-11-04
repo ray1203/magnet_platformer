@@ -11,7 +11,8 @@ public class Player_Move : MonoBehaviour
     private float maxSpeed;
     [SerializeField]
     private float jumpPower;
-    
+    //플레이어 하단의 블럭을 끌어당기면서 점프하면 무한점프 되는 문제 해결용
+    private List<Transform> bottomBlocks = new List<Transform>();
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -25,6 +26,13 @@ public class Player_Move : MonoBehaviour
         {
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             anim.SetBool("IsJumping", true); //점프 애니메이션 미구현
+            for (int i = 0; i < bottomBlocks.Count; i++)
+            {
+                if(bottomBlocks[i].TryGetComponent<Rigidbody2D>(out Rigidbody2D rdbd))
+                {
+                    rdbd.AddForce(Vector2.down * jumpPower, ForceMode2D.Impulse);
+                }
+            }
         }
 
         if (Input.GetButtonUp("Horizontal"))
@@ -66,6 +74,10 @@ public class Player_Move : MonoBehaviour
             RaycastHit2D rayHitR = Physics2D.Raycast(rigid.position + new Vector2(0.4f, 0), Vector3.down, 0.2f, LayerMask.GetMask("Platform"));
             if (rayHit.collider != null || rayHitL.collider != null || rayHitR.collider != null)
             {
+                bottomBlocks.Clear();
+                if (rayHit.collider != null && !bottomBlocks.Contains(rayHit.transform)) bottomBlocks.Add(rayHit.transform);
+                if (rayHitL.collider != null && !bottomBlocks.Contains(rayHitL.transform)) bottomBlocks.Add(rayHitL.transform);
+                if (rayHitR.collider != null && !bottomBlocks.Contains(rayHitR.transform)) bottomBlocks.Add(rayHitR.transform);
                 anim.SetBool("IsJumping", false);
             }
             //레이캐스트로 바닥감지 점프는 1번만

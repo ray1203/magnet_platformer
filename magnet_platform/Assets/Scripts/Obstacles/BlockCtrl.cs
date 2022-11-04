@@ -24,7 +24,7 @@ public class BlockCtrl : MonoBehaviour
     {
         if (flag)
         {
-            rigid.AddForce(new Vector2(-GameManager.instance.playerRigid.velocity.x*2*Time.deltaTime,0), ForceMode2D.Impulse);
+            rigid.AddForce(new Vector2(-GameManager.instance.playerRigid.velocity.x*Time.deltaTime,0), ForceMode2D.Impulse);
         }
 
     }
