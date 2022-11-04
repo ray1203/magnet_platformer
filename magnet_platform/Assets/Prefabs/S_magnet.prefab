@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6051282387154435972}
   - component: {fileID: 6051282387154435973}
   - component: {fileID: 6051282387154435970}
+  - component: {fileID: 1905455095078486041}
   m_Layer: 0
   m_Name: S_magnet
   m_TagString: Untagged
@@ -124,7 +125,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.2
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -147,3 +148,15 @@ MonoBehaviour:
   magnetism: 115
   magnetPower: 10
   power: {x: 0, y: 0}
+--- !u!114 &1905455095078486041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051282387154435971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd3cce0e7587d74692cabbfc9c8aecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

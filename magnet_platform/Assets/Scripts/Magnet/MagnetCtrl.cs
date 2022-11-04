@@ -14,6 +14,8 @@ public class MagnetCtrl : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
         if (magnetism != 'n' && magnetism != 's') magnetism = ' ';
+        if (magnetism == 'N') magnetism = 'n';
+        if (magnetism == 'S') magnetism = 's';
     }
     void Update()
     {

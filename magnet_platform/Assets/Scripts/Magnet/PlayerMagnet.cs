@@ -24,7 +24,6 @@ public class PlayerMagnet : MonoBehaviour
         for(int i=1;i<4;i++)
             if (Vector2.Distance(norm, dirs[i]) >Vector2.Distance(norm, dir))
                 dir = dirs[i];
-        Debug.Log(dir);
 
         if (dir==Vector2.left)//180,left
         {

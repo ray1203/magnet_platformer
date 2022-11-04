@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameObject player;
+    public Rigidbody2D playerRigid;
     public PlayerMagnet playerMagnet;
     public MagnetCtrl playerMagnetCtrl;
     public List<KeyCtrl> keys = new List<KeyCtrl>();
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindWithTag("Player").gameObject;
         playerMagnet = player.GetComponentInChildren<PlayerMagnet>();
         playerMagnetCtrl = player.GetComponent<MagnetCtrl>();
+        playerRigid = player.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame

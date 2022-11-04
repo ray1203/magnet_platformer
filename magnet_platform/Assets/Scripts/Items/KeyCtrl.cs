@@ -27,7 +27,6 @@ public class KeyCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(followRoot.Count);
         followRoot.Enqueue(GameManager.instance.player.transform.position);
         if (t > 0.7f)
         {

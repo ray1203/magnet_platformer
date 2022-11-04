@@ -11,7 +11,6 @@ public class MagnetManager : MonoBehaviour
     void Start()
     {
         magnetCtrls =  new List<MagnetCtrl>(GameObject.FindObjectsOfType<MagnetCtrl>());
-        Debug.Log(magnetCtrls.Count);
         playerMagnet = GameManager.instance.playerMagnet;
     }
 
