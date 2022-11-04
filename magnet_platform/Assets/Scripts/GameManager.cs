@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public PlayerMagnet playerMagnet;
     public MagnetCtrl playerMagnetCtrl;
+    public List<KeyCtrl> keys = new List<KeyCtrl>();
     // Start is called before the first frame update
     void Awake()
     {

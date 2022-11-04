@@ -31,7 +31,7 @@ public class MagnetManager : MonoBehaviour
                 
                 if (magnetCtrls[i].transform.tag == "Player" && (!playerMagnet.Find(magnetCtrls[j])||!playerMagnet.active)) continue;
                 if (magnetCtrls[j].transform.tag == "Player" && (!playerMagnet.Find(magnetCtrls[i])||!playerMagnet.active)) continue;
-                if (magnetCtrls[i].magnetism==0 || magnetCtrls[j].magnetism==0) continue;
+                if (magnetCtrls[i].magnetism==' '|| magnetCtrls[j].magnetism==' ') continue;
                 Vector2 pos1 = magnetCtrls[i].transform.position;
                 Vector2 pos2 = magnetCtrls[j].transform.position;
                 float magnetPower = magnetCtrls[i].magnetPower * magnetCtrls[j].magnetPower;

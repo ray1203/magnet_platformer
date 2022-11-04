@@ -13,6 +13,8 @@ public class KeyCtrl : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            if (!followPlayer && !GameManager.instance.keys.Contains(this))
+                GameManager.instance.keys.Add(this);
             followPlayer = true;
         }
     }
