@@ -9,27 +9,36 @@ public class PlayerMagnet : MonoBehaviour
     public List<MagnetCtrl> magnetCtrls = new List<MagnetCtrl>();
     public bool active = false;
     private List<Vector2> dirs = new List<Vector2>();
+
+    private GameObject Arm;
+    private GameObject Player;
+    private SpriteOutline Arm_Outline;
+    private SpriteOutline Player_Outline;
     private void Start()
     {
         dirs.Add(Vector2.left);
         dirs.Add(Vector2.right);
         dirs.Add(Vector2.up);
         dirs.Add(Vector2.down);
+        Arm = GameObject.Find("Arm");
+        Player = GameObject.Find("Player");
+        Arm_Outline = Arm.GetComponent<SpriteOutline>();
+        Player_Outline = Player.GetComponent<SpriteOutline>();
     }
     private void Update()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 norm = ((Vector2)transform.position - mousePos).normalized;
         Vector2 dir = dirs[0];
-        for(int i=1;i<4;i++)
-            if (Vector2.Distance(norm, dirs[i]) >Vector2.Distance(norm, dir))
+        for (int i = 1; i < 4; i++)
+            if (Vector2.Distance(norm, dirs[i]) > Vector2.Distance(norm, dir))
                 dir = dirs[i];
 
-        if (dir==Vector2.left)//180,left
+        if (dir == Vector2.left)//180,left
         {
             magnetDir = 180f;
         }
-        else if (dir==Vector2.right)//0,right
+        else if (dir == Vector2.right)//0,right
         {
             magnetDir = 0f;
         }
@@ -44,19 +53,35 @@ public class PlayerMagnet : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             active = true;
-        }else if (Input.GetMouseButtonUp(0))
+            Player_Outline.outlineSize = 1;
+            Arm_Outline.outlineSize = 1;
+        }
+        else if (Input.GetMouseButtonUp(0))
         {
             active = false;
+            Player_Outline.outlineSize = 0;
+            Arm_Outline.outlineSize = 0;
         }
-        transform.rotation = Quaternion.Euler(0f,0f,magnetDir);
 
-        
+        if (Player.transform.localScale.x > 0)
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, magnetDir);
+            Arm.transform.rotation = Quaternion.Euler(0f, 0f, magnetDir);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, (magnetDir+180)%360);
+            Arm.transform.rotation = Quaternion.Euler(0f, 0f, (magnetDir+180)%360);
+        }
+
+
+
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<MagnetCtrl>(out var magnetCtrl))
+        if (collision.TryGetComponent<MagnetCtrl>(out var magnetCtrl))
         {
             magnetCtrls.Add(magnetCtrl);
         }
@@ -70,7 +95,7 @@ public class PlayerMagnet : MonoBehaviour
     }
     public bool Find(MagnetCtrl magnetCtrl)
     {
-        foreach(var i in magnetCtrls)
+        foreach (var i in magnetCtrls)
         {
             if (i == magnetCtrl) return true;
         }

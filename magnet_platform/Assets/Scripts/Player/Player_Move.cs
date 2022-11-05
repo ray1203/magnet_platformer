@@ -7,6 +7,7 @@ public class Player_Move : MonoBehaviour
     Animator anim;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
+
     [SerializeField]
     private float maxSpeed;
     [SerializeField]
@@ -45,7 +46,7 @@ public class Player_Move : MonoBehaviour
         if (Input.GetButton("Horizontal"))
         {
             anim.SetBool("IsWalking", true);
-            spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+            transform.localScale = new Vector3(2 * Input.GetAxisRaw("Horizontal"), 2, 1);
         }
 
 

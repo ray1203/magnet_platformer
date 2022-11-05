@@ -56,6 +56,93 @@ TextureImporter:
   - first:
       213: -3708310369751150559
     second: MagnetRobot_17
+  - first:
+      213: -502308703973727732
+    second: MagnetRobot_18
+  - first:
+      213: -6007638749469006244
+    second: MagnetRobot_19
+  - first:
+      213: 1463533129890265906
+    second: MagnetRobot_20
+  - first:
+      213: -4256416282077177708
+    second: MagnetRobot_21
+  - first:
+      213: 9045999741899404308
+    second: MagnetRobot_22
+  - first:
+      213: 8831941263839305172
+    second: MagnetRobot_23
+  - first:
+      213: -377506312065987214
+    second: MagnetRobot_24
+  - first:
+      213: 6541539596555298162
+    second: MagnetRobot_25
+  - first:
+      213: -869565867915897744
+    second: MagnetRobot_26
+  - first:
+      213: -1650558610904515079
+    second: MagnetRobot_27
+  - first:
+      213: -6473255569488244561
+    second: MagnetRobot_28
+  - first:
+      213: 6067879543182954245
+    second: MagnetRobot_29
+  - first:
+      213: -5867710046533874462
+    second: MagnetRobot_30
+  - first:
+      213: 7469086251458243295
+    second: MagnetRobot_31
+  - first:
+      213: -8207062961928768572
+    second: MagnetRobot_32
+  - first:
+      213: -7539850857302604903
+    second: MagnetRobot_33
+  - first:
+      213: -8019567675826967999
+    second: MagnetRobot_34
+  - first:
+      213: 4526407214311327571
+    second: MagnetRobot_35
+  - first:
+      213: 5162027126157322996
+    second: MagnetRobot_36
+  - first:
+      213: 5576305716430493729
+    second: MagnetRobot_37
+  - first:
+      213: -4901233405758516770
+    second: MagnetRobot_38
+  - first:
+      213: 3951643954258645234
+    second: MagnetRobot_39
+  - first:
+      213: -6373249231587025563
+    second: MagnetRobot_40
+  - first:
+      213: 5171505463104904501
+    second: MagnetRobot_41
+  - first:
+      213: 8669353718969418274
+    second: MagnetRobot_42
+  - first:
+      213: -8374311038244677045
+    second: MagnetRobot_43
+  - first:
+      213: 5706145874187164021
+    second: MagnetRobot_44
+  - first:
+      213: -8244734922606539267
+    second: MagnetRobot_45
+  - first:
+      213: -1542821781146005838
+    second: MagnetRobot_46
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -173,7 +260,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 208
+        y: 96
         width: 48
         height: 48
       alignment: 7
@@ -194,7 +281,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 208
+        y: 96
         width: 48
         height: 48
       alignment: 7
@@ -214,12 +301,12 @@ TextureImporter:
       name: MagnetRobot_2
       rect:
         serializedVersion: 2
-        x: 96
-        y: 208
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 87
+        y: 112
+        width: 42
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,7 +323,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 144
-        y: 208
+        y: 96
         width: 48
         height: 48
       alignment: 7
@@ -257,7 +344,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 208
+        y: 96
         width: 48
         height: 48
       alignment: 7
@@ -278,7 +365,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 160
+        y: 48
         width: 48
         height: 48
       alignment: 7
@@ -299,7 +386,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 160
+        y: 48
         width: 48
         height: 48
       alignment: 7
@@ -320,7 +407,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 160
+        y: 48
         width: 48
         height: 48
       alignment: 7
@@ -341,7 +428,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 112
+        y: 0
         width: 48
         height: 48
       alignment: 7
@@ -362,7 +449,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 112
+        y: 0
         width: 48
         height: 48
       alignment: 7
@@ -383,7 +470,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 112
+        y: 0
         width: 48
         height: 48
       alignment: 7
@@ -404,7 +491,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 144
-        y: 112
+        y: 0
         width: 48
         height: 48
       alignment: 7
@@ -425,7 +512,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 112
+        y: 0
         width: 48
         height: 48
       alignment: 7
@@ -437,111 +524,6 @@ TextureImporter:
       bones: []
       spriteID: 94d135704ae2306c0800000000000000
       internalID: -4178444747237286583
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MagnetRobot_13
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 49da6fe7049ab7fe0800000000000000
-      internalID: -1190171582036267628
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MagnetRobot_14
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 64
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: accb3a22546da9070800000000000000
-      internalID: 8114033271083613386
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MagnetRobot_15
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 64
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 975fbcb5bde20c700800000000000000
-      internalID: 558497873466750329
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MagnetRobot_16
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 64
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 54a97630321441150800000000000000
-      internalID: 5842366235243158085
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MagnetRobot_17
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 64
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 120d51ebd5f698cc0800000000000000
-      internalID: -3708310369751150559
       vertices: []
       indices: 
       edges: []
