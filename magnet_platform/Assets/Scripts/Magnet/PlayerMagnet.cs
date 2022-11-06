@@ -10,20 +10,21 @@ public class PlayerMagnet : MonoBehaviour
     public bool active = false;
     private List<Vector2> dirs = new List<Vector2>();
 
-    private GameObject Arm;
-    private GameObject Player;
-    private SpriteOutline Arm_Outline;
-    private SpriteOutline Player_Outline;
+    private GameObject arm;
+    private GameObject player;
+    private SpriteOutline armOutline;
+    private SpriteOutline playerOutline;
     private void Start()
     {
         dirs.Add(Vector2.left);
         dirs.Add(Vector2.right);
         dirs.Add(Vector2.up);
         dirs.Add(Vector2.down);
-        Arm = GameObject.Find("Arm");
-        Player = GameObject.Find("Player");
-        Arm_Outline = Arm.GetComponent<SpriteOutline>();
-        Player_Outline = Player.GetComponent<SpriteOutline>();
+        player = GameManager.instance.player;
+        arm = player.transform.Find("Arm").gameObject;
+
+        armOutline = arm.GetComponent<SpriteOutline>();
+        playerOutline = player.GetComponent<SpriteOutline>();
     }
     private void Update()
     {
@@ -53,25 +54,25 @@ public class PlayerMagnet : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             active = true;
-            Player_Outline.outlineSize = 1;
-            Arm_Outline.outlineSize = 1;
+            playerOutline.outlineSize = 1;
+            armOutline.outlineSize = 1;
         }
         else if (Input.GetMouseButtonUp(0))
         {
             active = false;
-            Player_Outline.outlineSize = 0;
-            Arm_Outline.outlineSize = 0;
+            playerOutline.outlineSize = 0;
+            armOutline.outlineSize = 0;
         }
 
-        if (Player.transform.localScale.x > 0)
+        if (player.transform.localScale.x > 0)
         {
             transform.rotation = Quaternion.Euler(0f, 0f, magnetDir);
-            Arm.transform.rotation = Quaternion.Euler(0f, 0f, magnetDir);
+            arm.transform.rotation = Quaternion.Euler(0f, 0f, magnetDir);
         }
         else
         {
             transform.rotation = Quaternion.Euler(0f, 0f, (magnetDir+180)%360);
-            Arm.transform.rotation = Quaternion.Euler(0f, 0f, (magnetDir+180)%360);
+            arm.transform.rotation = Quaternion.Euler(0f, 0f, (magnetDir+180)%360);
         }
 
 
