@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f73bdc84f5dd44396e0fcf74f00fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 1, g: 0.34117648, b: 0.34117648, a: 1}
+  color: {r: 0, g: 0, b: 0, a: 1}
   outlineSize: 0
 --- !u!1 &1907863616422286452
 GameObject:
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f73bdc84f5dd44396e0fcf74f00fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 1, g: 0.34117648, b: 0.34117648, a: 1}
+  color: {r: 0, g: 0, b: 0, a: 1}
   outlineSize: 0
 --- !u!1 &7215131006158900709
 GameObject:

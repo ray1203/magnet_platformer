@@ -46,7 +46,7 @@ public class Player_Move : MonoBehaviour
         if (Input.GetButton("Horizontal"))
         {
             anim.SetBool("IsWalking", true);
-            transform.localScale = new Vector3(2 * Input.GetAxisRaw("Horizontal"), 2, 1);
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(Input.GetAxisRaw("Horizontal")), transform.localScale.y, 1);
         }
 
 
