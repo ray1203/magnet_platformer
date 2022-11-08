@@ -20,6 +20,13 @@ public class Pill : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Color32 color;
+            if (magnetism == 'n')
+                color = new Color32(255, 87, 87, 255);
+            else
+                color = new Color32(87, 87, 255, 255);
+            collision.gameObject.GetComponent<SpriteOutline>().color = color;
+            collision.gameObject.transform.GetChild(1).GetComponent<SpriteOutline>().color = color;
             GameManager.instance.playerMagnetCtrl.magnetism = magnetism;
             Destroy(this.gameObject);
         }
