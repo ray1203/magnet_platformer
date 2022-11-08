@@ -14,11 +14,20 @@ public class Player_Move : MonoBehaviour
     private float jumpPower;
     //플레이어 하단의 블럭을 끌어당기면서 점프하면 무한점프 되는 문제 해결용
     private List<Transform> bottomBlocks = new List<Transform>();
+    private GameObject player;
+    private PlayerMagnet playerMagnet;
+    private PlayerManager playerManager;
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    private void Start()
+    {
+        player = GameManager.instance.player;
+        playerMagnet = GameManager.instance.playerMagnet;
+        playerManager = GameManager.instance.playerManager;
     }
     void Update()
     {
@@ -27,13 +36,17 @@ public class Player_Move : MonoBehaviour
         {
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             anim.SetBool("IsJumping", true); //점프 애니메이션 미구현
+            //플레이어 아래 블록에 작용 반작용
             for (int i = 0; i < bottomBlocks.Count; i++)
-            {
-                if(bottomBlocks[i].TryGetComponent<Rigidbody2D>(out Rigidbody2D rdbd))
-                {
+                if (bottomBlocks[i].TryGetComponent<Rigidbody2D>(out Rigidbody2D rdbd))
                     rdbd.AddForce(Vector2.down * jumpPower, ForceMode2D.Impulse);
-                }
-            }
+
+            //플레이어가 자력으로 잡고 있는 오브젝트와 같이 점프
+            if (playerMagnet.active)
+                foreach (var i in playerManager.blocks)
+                    if (playerMagnet.magnetCtrls.Contains(i))
+                        if (i.transform.TryGetComponent<Rigidbody2D>(out Rigidbody2D rgbd))
+                            rgbd.AddForce(Vector2.up * jumpPower*rgbd.mass/playerManager.rgbd.mass, ForceMode2D.Impulse);
         }
 
         if (Input.GetButtonUp("Horizontal"))

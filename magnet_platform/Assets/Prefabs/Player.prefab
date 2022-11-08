@@ -123,10 +123,11 @@ GameObject:
   - component: {fileID: 1907863616422286451}
   - component: {fileID: 1907863616422286450}
   - component: {fileID: 1907863616422286453}
+  - component: {fileID: 6285868355893302815}
+  - component: {fileID: 2390854206047095590}
   - component: {fileID: 1907863616422286414}
   - component: {fileID: 1907863616422286449}
   - component: {fileID: 1907863616422286448}
-  - component: {fileID: 6285868355893302815}
   - component: {fileID: 8137820356062996468}
   m_Layer: 0
   m_Name: Player
@@ -216,6 +217,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 8
   jumpPower: 15
+--- !u!114 &6285868355893302815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907863616422286452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ecefa06901414748882d1449e7153b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnetism: 0
+  magnetPower: 1000
+  power: {x: 0, y: 0}
+--- !u!114 &2390854206047095590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907863616422286452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a9a09ed6225bef4eb8880a73971cb5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blocks: []
 --- !u!61 &1907863616422286414
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -282,21 +311,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6285868355893302815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1907863616422286452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ecefa06901414748882d1449e7153b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magnetism: 0
-  magnetPower: 1000
-  power: {x: 0, y: 0}
 --- !u!114 &8137820356062996468
 MonoBehaviour:
   m_ObjectHideFlags: 0

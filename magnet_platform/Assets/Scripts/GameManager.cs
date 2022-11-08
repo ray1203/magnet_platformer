@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Rigidbody2D playerRigid;
     public PlayerMagnet playerMagnet;
     public MagnetCtrl playerMagnetCtrl;
+    public PlayerManager playerManager;
     public List<KeyCtrl> keys = new List<KeyCtrl>();
     // Start is called before the first frame update
     void Awake()
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
         playerMagnet = player.GetComponentInChildren<PlayerMagnet>();
         playerMagnetCtrl = player.GetComponent<MagnetCtrl>();
         playerRigid = player.GetComponent<Rigidbody2D>();
+        playerManager = player.GetComponent<PlayerManager>();
     }
 
     public void GameOver()

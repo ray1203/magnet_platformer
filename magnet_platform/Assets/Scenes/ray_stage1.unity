@@ -2960,6 +2960,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: S_magnet (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6051282387154435973, guid: 18482d574bc9b3b4e9436c8edacafc12, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6051282387154435974, guid: 18482d574bc9b3b4e9436c8edacafc12, type: 3}
       propertyPath: m_RootOrder
       value: 1
