@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 7495095758824964973}
   - component: {fileID: 7495095758824964974}
   - component: {fileID: -4866967040394386688}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: N_magnet
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -35,22 +35,10 @@ public class PlayerMagnet : MonoBehaviour
             if (Vector2.Distance(norm, dirs[i]) > Vector2.Distance(norm, dir))
                 dir = dirs[i];
 
-        if (dir == Vector2.left)//180,left
-        {
-            magnetDir = 180f;
-        }
-        else if (dir == Vector2.right)//0,right
-        {
-            magnetDir = 0f;
-        }
-        else if (dir == Vector2.up)//90,up
-        {
-            magnetDir = 90f;
-        }
-        else if (dir == Vector2.down)//270,down
-        {
-            magnetDir = 270f;
-        }
+        if (dir == Vector2.left)magnetDir = 180f;
+        else if (dir == Vector2.right)magnetDir = 0f;
+        else if (dir == Vector2.up)magnetDir = 90f;
+        else if (dir == Vector2.down)magnetDir = 270f;
         if (Input.GetMouseButtonDown(0))
         {
             active = true;
@@ -74,12 +62,7 @@ public class PlayerMagnet : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, (magnetDir+180)%360);
             arm.transform.rotation = Quaternion.Euler(0f, 0f, (magnetDir+180)%360);
         }
-
-
-
-
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<MagnetCtrl>(out var magnetCtrl))
@@ -97,9 +80,7 @@ public class PlayerMagnet : MonoBehaviour
     public bool Find(MagnetCtrl magnetCtrl)
     {
         foreach (var i in magnetCtrls)
-        {
-            if (i == magnetCtrl) return true;
-        }
+            if(i == magnetCtrl) return true;
         return false;
     }
 
