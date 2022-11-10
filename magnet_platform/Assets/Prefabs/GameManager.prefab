@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5968360924493347968}
   - component: {fileID: 5968360924493347971}
   - component: {fileID: 5968360924493347969}
+  - component: {fileID: 1438375530307687170}
   m_Layer: 6
   m_Name: GameManager
   m_TagString: Platform
@@ -57,5 +58,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  playerRigid: {fileID: 0}
   playerMagnet: {fileID: 0}
   playerMagnetCtrl: {fileID: 0}
+  playerManager: {fileID: 0}
+  keys: []
+--- !u!114 &1438375530307687170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5968360924493347970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e81be1facc18a4fb563d0188faa48e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnetN: {fileID: 2140366725347071456, guid: 7139cbebb46002248a45c0987019c17a, type: 3}
+  magnetS: {fileID: -1854817358501458622, guid: 7139cbebb46002248a45c0987019c17a, type: 3}
+  whiteTile: {fileID: 1354511209927527905, guid: f0c8bab92a1137e4a832d17f2c3b3fa5, type: 3}

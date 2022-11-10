@@ -16,6 +16,7 @@ public class MagnetCtrl : MonoBehaviour
         if (magnetism != 'n' && magnetism != 's') magnetism = ' ';
         if (magnetism == 'N') magnetism = 'n';
         if (magnetism == 'S') magnetism = 's';
+
     }
     void FixedUpdate()
     {
@@ -26,6 +27,4 @@ public class MagnetCtrl : MonoBehaviour
         rb2D.AddForce(new Vector2(newX, newY),ForceMode2D.Force);
         //this.transform.position = new Vector2(newX*Time.deltaTime,newY*Time.deltaTime);
     }
-
-
 }

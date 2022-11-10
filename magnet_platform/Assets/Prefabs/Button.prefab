@@ -308,9 +308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7477b20f29058645b80ed47ef8a969f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachedMagnet: {fileID: 0}
-  magnetSprite: {fileID: 0}
-  magnetPower: 200
+  setting: 0
+  attachedObj: {fileID: 0}
 --- !u!1 &1506920894646581369
 GameObject:
   m_ObjectHideFlags: 0
