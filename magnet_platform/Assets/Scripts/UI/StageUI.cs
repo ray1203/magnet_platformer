@@ -7,24 +7,37 @@ public class StageUI : MonoBehaviour
 {
     public Transform stages;
     private int lastStage=-1;
+    public Sprite filledStar;
     // Start is called before the first frame update
     void Start()
     {
+        LoadStageUI();   
+    }
 
-        for(int i = 0; i < stages.childCount; i++)
+    public void LoadStageUI()
+    {
+        lastStage = -1;
+        for (int i = 0; i < stages.childCount; i++)
         {
             if (StageManager.instance.stages[i] == 0)
             {
-                Debug.Log("Stage" + i);
                 if (lastStage == -1) lastStage = i;
-                else stages.GetChild(i).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f);
+                else
+                {
+                    stages.GetChild(i).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f);
+                    for(int j = 0; j < 3; j++)
+                    {
+                        stages.GetChild(i).GetChild(j).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f);
+                    }
+                    stages.GetChild(i).GetChild(3).GetComponent<Text>().color = new Color(0.5f, 0.5f, 0.5f);
+                }
+            }
+            else
+            {
+                if (StageManager.instance.stages[i] >= 1)stages.GetChild(i).Find("Star1").GetComponent<Image>().sprite = filledStar;
+                if (StageManager.instance.stages[i] >= 2)stages.GetChild(i).Find("Star3").GetComponent<Image>().sprite = filledStar;
+                if (StageManager.instance.stages[i] >= 3)stages.GetChild(i).Find("Star2").GetComponent<Image>().sprite = filledStar;
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

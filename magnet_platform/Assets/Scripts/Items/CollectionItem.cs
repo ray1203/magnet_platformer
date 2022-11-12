@@ -20,7 +20,6 @@ public class CollectionItem : MonoBehaviour
         }
     }
     public void OnAnimEnd() {
-        Debug.Log("AA");
         Destroy(gameObject);
     }
 }

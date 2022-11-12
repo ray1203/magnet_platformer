@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpriteManager : MonoBehaviour
 {
     public static SpriteManager instance;
-    public Sprite magnetN, magnetS,whiteTile;
+    public Sprite magnetN, magnetS,whiteTile,filledStar;
     private void Awake()
     {
         instance = this;
