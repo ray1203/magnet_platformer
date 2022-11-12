@@ -22,6 +22,6 @@ public class ButtonGate : MonoBehaviour
             desPos = endPos;
         else
             desPos = startPos;
-        transform.position = Vector2.MoveTowards(transform.position, desPos, Time.deltaTime * speed);
+        transform.position = Vector3.MoveTowards(transform.position, desPos, Time.deltaTime * speed);
     }
 }
