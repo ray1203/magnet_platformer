@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 91108a697cfe5a249995c71f38804a43
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - BM HANNA Pro OTF
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a685e5c322db69e43b8164a06955b531, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
