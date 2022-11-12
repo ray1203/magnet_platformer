@@ -6,8 +6,8 @@ public class KeyCtrl : MonoBehaviour
 {
     [SerializeField]
     private bool followPlayer = false;
-    [SerializeField]
-    Queue<Vector2> followRoot = new Queue<Vector2>();
+    private float distance = 1f;
+    private float speed = 2f;
     float t = 0f;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,14 +27,8 @@ public class KeyCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        followRoot.Enqueue(GameManager.instance.player.transform.position);
-        if (t > 0.7f)
-        {
-            Vector2 nextPos = followRoot.Dequeue();
-            if (followPlayer)
-                transform.position = new Vector2(nextPos.x, nextPos.y + 1f) ;
-                    //Vector2.MoveTowards(transform.position, nextPos, 1f);
-        }
-        t += Time.deltaTime;
+        if(followPlayer)
+            if (Vector2.Distance(GameManager.instance.player.transform.position, transform.position) >= distance)
+                transform.position= Vector2.Lerp(transform.position, GameManager.instance.player.transform.position, speed*Time.deltaTime);
     }
 }
