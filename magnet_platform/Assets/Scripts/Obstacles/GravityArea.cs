@@ -9,6 +9,7 @@ public class GravityArea : MonoBehaviour
     {
         if(collision.TryGetComponent<Rigidbody2D>(out Rigidbody2D rigid)){
             rigid.gravityScale *= amount;
+            rigid.mass *= amount;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -16,6 +17,7 @@ public class GravityArea : MonoBehaviour
         if (collision.TryGetComponent<Rigidbody2D>(out Rigidbody2D rigid))
         {
             rigid.gravityScale /= amount;
+            rigid.mass /= amount;
         }
     }
 }
