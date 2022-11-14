@@ -42,11 +42,7 @@ public class Player_Move : MonoBehaviour
                     rdbd.AddForce(Vector2.down * jumpPower, ForceMode2D.Impulse);
 
             //플레이어가 자력으로 잡고 있는 오브젝트와 같이 점프
-            if (playerMagnet.active)
-                foreach (var i in playerManager.blocks)
-                    if (playerMagnet.magnetCtrls.Contains(i))
-                        if (i.transform.TryGetComponent<Rigidbody2D>(out Rigidbody2D rgbd))
-                            rgbd.AddForce(Vector2.up * jumpPower*rgbd.mass/playerManager.rgbd.mass, ForceMode2D.Impulse);
+            AddForceToBlock(Vector2.up * jumpPower);
         }
 
         if (Input.GetButtonUp("Horizontal"))
@@ -75,7 +71,6 @@ public class Player_Move : MonoBehaviour
             rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
         else if (rigid.velocity.x < maxSpeed * (-1))
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
-
         if (rigid.velocity.y < 0)
         {
             Debug.DrawRay(rigid.position, 0.2f * Vector3.down, new Color(0, 1, 0));
@@ -96,5 +91,13 @@ public class Player_Move : MonoBehaviour
             }
             //레이캐스트로 바닥감지 점프는 1번만
         }
+    }
+    void AddForceToBlock(Vector2 force)
+    {
+        if (playerMagnet.active)
+            foreach (var i in playerManager.blocks)
+                if (playerMagnet.magnetCtrls.Contains(i))
+                    if (i.transform.TryGetComponent<Rigidbody2D>(out Rigidbody2D rgbd))
+                        rgbd.AddForce(force * rgbd.mass / playerManager.rgbd.mass, ForceMode2D.Impulse);
     }
 }
