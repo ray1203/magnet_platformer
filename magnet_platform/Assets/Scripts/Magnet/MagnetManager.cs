@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MagnetManager : MonoBehaviour
 {
-    List<MagnetCtrl> magnetCtrls = new List<MagnetCtrl>();
+    public List<MagnetCtrl> magnetCtrls = new List<MagnetCtrl>();
     PlayerMagnet playerMagnet;
     // Start is called before the first frame update
     void Start()
@@ -50,4 +50,5 @@ public class MagnetManager : MonoBehaviour
             magnetCtrls[i].power = powers[i];
         }
     }
+    
 }

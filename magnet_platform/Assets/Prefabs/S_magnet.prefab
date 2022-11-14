@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magnetism: 115
+  effect: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   magnetPower: 10
   power: {x: 0, y: 0}
 --- !u!114 &1905455095078486041

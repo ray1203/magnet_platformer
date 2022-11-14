@@ -27,4 +27,19 @@ public class MagnetCtrl : MonoBehaviour
         rb2D.AddForce(new Vector2(newX, newY),ForceMode2D.Force);
         //this.transform.position = new Vector2(newX*Time.deltaTime,newY*Time.deltaTime);
     }
+
+    public void deleteMagnet()
+    {
+        
+        List<MagnetCtrl> magnetCtrls = GameObject.Find("GameManager").GetComponent<MagnetManager>().magnetCtrls;
+        for (int i = magnetCtrls.Count - 1; i >= 0; i--)
+        {
+            
+            if (this.gameObject == magnetCtrls[i].gameObject)
+                magnetCtrls.Remove(magnetCtrls[i]);
+        }
+        Destroy(gameObject);
+    }
+    
 }
+
