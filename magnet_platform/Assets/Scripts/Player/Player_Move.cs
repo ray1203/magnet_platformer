@@ -14,7 +14,6 @@ public class Player_Move : MonoBehaviour
     private float DashSpeed;
     [SerializeField]
     private float jumpPower;
-    //�÷��̾� �ϴ��� ����� ������鼭 �����ϸ� �������� �Ǵ� ���� �ذ��
     private List<Transform> bottomBlocks = new List<Transform>();
     private GameObject player;
     private PlayerMagnet playerMagnet;
@@ -37,13 +36,11 @@ public class Player_Move : MonoBehaviour
         if (Input.GetButtonDown("Jump") && !anim.GetBool("IsJumping"))
         {
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            anim.SetBool("IsJumping", true); //���� �ִϸ��̼� �̱���
-            //�÷��̾� �Ʒ� ��Ͽ� �ۿ� ���ۿ�
+            anim.SetBool("IsJumping", true); 
             for (int i = 0; i < bottomBlocks.Count; i++)
                 if (bottomBlocks[i].TryGetComponent<Rigidbody2D>(out Rigidbody2D rdbd))
                     rdbd.AddForce(Vector2.down * jumpPower, ForceMode2D.Impulse);
 
-            //�÷��̾ �ڷ����� ��� �ִ� ������Ʈ�� ���� ����
             AddForceToBlock(Vector2.up * jumpPower);
         }
 
@@ -53,7 +50,7 @@ public class Player_Move : MonoBehaviour
             rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
         }
 
-        //�÷��̾� �ٶ󺸴� ����
+
         if (Input.GetButton("Horizontal"))
         {
             anim.SetBool("IsWalking", true);
@@ -81,10 +78,6 @@ public class Player_Move : MonoBehaviour
             rigid.velocity = new Vector2(DashMaxSpeed * (-1), rigid.velocity.y);
 
 
-        if (rigid.velocity.x > maxSpeed)
-            rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
-        else if (rigid.velocity.x < maxSpeed * (-1))
-            rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
         if (rigid.velocity.y < 0)
         {
             Debug.DrawRay(rigid.position, 0.2f * Vector3.down, new Color(0, 1, 0));
@@ -103,7 +96,6 @@ public class Player_Move : MonoBehaviour
                 if (rayHitR.collider != null && !bottomBlocks.Contains(rayHitR.transform)) bottomBlocks.Add(rayHitR.transform);
                 anim.SetBool("IsJumping", false);
             }
-            //����ĳ��Ʈ�� �ٴڰ��� ������ 1����
         }
     }
     void AddForceToBlock(Vector2 force)
