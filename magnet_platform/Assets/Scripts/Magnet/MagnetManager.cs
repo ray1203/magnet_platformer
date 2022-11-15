@@ -6,6 +6,7 @@ using UnityEngine;
 public class MagnetManager : MonoBehaviour
 {
     public List<MagnetCtrl> magnetCtrls = new List<MagnetCtrl>();
+    public float maxVal = 5000.0f;
     PlayerMagnet playerMagnet;
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,10 @@ public class MagnetManager : MonoBehaviour
         }
         for(int i = 0; i < magnetCtrls.Count; i++)
         {
+            if (powers[i].x > maxVal) powers[i].x = maxVal;
+            if (powers[i].y > maxVal) powers[i].y = maxVal;
+            if (powers[i].x < -maxVal) powers[i].x = -maxVal;
+            if (powers[i].y < -maxVal) powers[i].y = -maxVal;
             magnetCtrls[i].power = powers[i];
         }
     }
