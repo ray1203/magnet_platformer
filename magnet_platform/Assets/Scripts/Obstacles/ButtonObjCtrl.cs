@@ -57,6 +57,7 @@ public class ButtonData
     {
         magnet,
         gate,
+        nothing,
     }
     public ButtonSetting setting;
     public delegate void emptyFunc(bool flag);
@@ -74,14 +75,15 @@ public class ButtonData
         objSprite = attachedObj.GetComponent<SpriteRenderer>();
         if (attachedObj.TryGetComponent<MagnetCtrl>(out magnetCtrl))
         {
-            setting = ButtonData.ButtonSetting.magnet;
+            setting = ButtonSetting.magnet;
             magnetism = magnetCtrl.magnetism;
 
         }
         else if (attachedObj.TryGetComponent<ButtonGate>(out buttonGate))
         {
-            setting = ButtonData.ButtonSetting.gate;
+            setting = ButtonSetting.gate;
         }
+        else setting = ButtonSetting.nothing;
         SetFunc();
     }
     public void SetFunc()
@@ -93,13 +95,15 @@ public class ButtonData
                 if (flag)
                 {
                     magnetCtrl.magnetism = magnetism;
-                    if (magnetCtrl.magnetism == 'n') objSprite.sprite = SpriteManager.instance.magnetN;
-                    if (magnetCtrl.magnetism == 's') objSprite.sprite = SpriteManager.instance.magnetS;
+                    objSprite.color = Color.white;
+                    //if (magnetCtrl.magnetism == 'n') objSprite.sprite = SpriteManager.instance.magnetN;
+                    //if (magnetCtrl.magnetism == 's') objSprite.sprite = SpriteManager.instance.magnetS;
                 }
                 else
                 {
                     magnetCtrl.magnetism = ' ';
-                    objSprite.sprite = SpriteManager.instance.whiteTile;
+                    //objSprite.sprite = SpriteManager.instance.whiteTile;
+                    objSprite.color = Color.gray;
                 }
             };
         }else if(setting == ButtonSetting.gate)
@@ -107,6 +111,12 @@ public class ButtonData
             func = delegate (bool flag)
             {
                 buttonGate.open = flag;
+            };
+        }else if(setting == ButtonSetting.nothing)
+        {
+            func = delegate (bool flag)
+            {
+
             };
         }
     }
