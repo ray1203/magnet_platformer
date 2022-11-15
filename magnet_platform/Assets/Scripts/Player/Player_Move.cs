@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +14,7 @@ public class Player_Move : MonoBehaviour
     private float DashSpeed;
     [SerializeField]
     private float jumpPower;
-    //ÇÃ·¹ÀÌ¾î ÇÏ´ÜÀÇ ºí·°À» ²ø¾î´ç±â¸é¼­ Á¡ÇÁÇÏ¸é ¹«ÇÑÁ¡ÇÁ µÇ´Â ¹®Á¦ ÇØ°á¿ë
+    //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ï´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é¼­ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø°ï¿½ï¿½
     private List<Transform> bottomBlocks = new List<Transform>();
     private GameObject player;
     private PlayerMagnet playerMagnet;
@@ -37,18 +37,14 @@ public class Player_Move : MonoBehaviour
         if (Input.GetButtonDown("Jump") && !anim.GetBool("IsJumping"))
         {
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            anim.SetBool("IsJumping", true); //Á¡ÇÁ ¾Ö´Ï¸ÞÀÌ¼Ç ¹Ì±¸Çö
-            //ÇÃ·¹ÀÌ¾î ¾Æ·¡ ºí·Ï¿¡ ÀÛ¿ë ¹ÝÀÛ¿ë
+            anim.SetBool("IsJumping", true); //ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½Ì±ï¿½ï¿½ï¿½
+            //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Æ·ï¿½ ï¿½ï¿½Ï¿ï¿½ ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½Û¿ï¿½
             for (int i = 0; i < bottomBlocks.Count; i++)
                 if (bottomBlocks[i].TryGetComponent<Rigidbody2D>(out Rigidbody2D rdbd))
                     rdbd.AddForce(Vector2.down * jumpPower, ForceMode2D.Impulse);
 
-            //ÇÃ·¹ÀÌ¾î°¡ ÀÚ·ÂÀ¸·Î Àâ°í ÀÖ´Â ¿ÀºêÁ§Æ®¿Í °°ÀÌ Á¡ÇÁ
-            if (playerMagnet.active)
-                foreach (var i in playerManager.blocks)
-                    if (playerMagnet.magnetCtrls.Contains(i))
-                        if (i.transform.TryGetComponent<Rigidbody2D>(out Rigidbody2D rgbd))
-                            rgbd.AddForce(Vector2.up * jumpPower*rgbd.mass/playerManager.rgbd.mass, ForceMode2D.Impulse);
+            //ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            AddForceToBlock(Vector2.up * jumpPower);
         }
 
         if (Input.GetButtonUp("Horizontal"))
@@ -57,7 +53,7 @@ public class Player_Move : MonoBehaviour
             rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
         }
 
-        //ÇÃ·¹ÀÌ¾î ¹Ù¶óº¸´Â ¹æÇâ
+        //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ù¶óº¸´ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (Input.GetButton("Horizontal"))
         {
             anim.SetBool("IsWalking", true);
@@ -84,6 +80,11 @@ public class Player_Move : MonoBehaviour
         else if (rigid.velocity.x < DashMaxSpeed * (-1))
             rigid.velocity = new Vector2(DashMaxSpeed * (-1), rigid.velocity.y);
 
+
+        if (rigid.velocity.x > maxSpeed)
+            rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
+        else if (rigid.velocity.x < maxSpeed * (-1))
+            rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
         if (rigid.velocity.y < 0)
         {
             Debug.DrawRay(rigid.position, 0.2f * Vector3.down, new Color(0, 1, 0));
@@ -102,7 +103,15 @@ public class Player_Move : MonoBehaviour
                 if (rayHitR.collider != null && !bottomBlocks.Contains(rayHitR.transform)) bottomBlocks.Add(rayHitR.transform);
                 anim.SetBool("IsJumping", false);
             }
-            //·¹ÀÌÄ³½ºÆ®·Î ¹Ù´Ú°¨Áö Á¡ÇÁ´Â 1¹ø¸¸
+            //ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ù´Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½
         }
+    }
+    void AddForceToBlock(Vector2 force)
+    {
+        if (playerMagnet.active)
+            foreach (var i in playerManager.blocks)
+                if (playerMagnet.magnetCtrls.Contains(i))
+                    if (i.transform.TryGetComponent<Rigidbody2D>(out Rigidbody2D rgbd))
+                        rgbd.AddForce(force * rgbd.mass / playerManager.rgbd.mass, ForceMode2D.Impulse);
     }
 }
