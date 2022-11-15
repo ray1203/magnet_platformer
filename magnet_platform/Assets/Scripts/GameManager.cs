@@ -23,7 +23,14 @@ public class GameManager : MonoBehaviour
         playerRigid = player.GetComponent<Rigidbody2D>();
         playerManager = player.GetComponent<PlayerManager>();
     }
-
+    private void Start()
+    {
+        if (StageManager.instance == null)
+        {
+            GameObject stageManager = Instantiate(new GameObject("StageManager"));
+            stageManager.AddComponent<StageManager>();
+        }
+    }
     public void GameOver()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

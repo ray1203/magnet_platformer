@@ -18,6 +18,7 @@ public class StageManager : MonoBehaviour
     public int currentStage = -1;
     private void Awake()
     {
+        if (instance != null) Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
         for (int i = 0; i < 5; i++) stages.Add(0);
         instance = this;
@@ -36,6 +37,11 @@ public class StageManager : MonoBehaviour
     }
     public void StageClear()
     {
+        if (currentStage == -1)
+        {
+            SceneManager.LoadScene("StageSelect");
+            return;
+        }
         int amount = GameManager.instance.collectionCount+1;
         if (stages[currentStage] < amount) stages[currentStage] = amount;
         SaveData();
@@ -56,7 +62,6 @@ public class StageManager : MonoBehaviour
     }
     private void StrToData(string str)
     {
-        Debug.Log("stage:" + str);
         string[] datas = str.Split(' ');
         for (int i = 0; i < stages.Count; i++)
             stages[i] = int.Parse(datas[i]);

@@ -11,11 +11,12 @@ public class StageUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadStageUI();   
+        LoadStageUI();
     }
 
     public void LoadStageUI()
     {
+        Debug.Log("stageUI load");
         lastStage = -1;
         for (int i = 0; i < stages.childCount; i++)
         {
