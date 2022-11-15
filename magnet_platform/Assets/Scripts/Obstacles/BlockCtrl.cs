@@ -5,6 +5,7 @@ using UnityEngine;
 public class BlockCtrl : MonoBehaviour
 {
     private Rigidbody2D rigid;
+    [SerializeField]
     private bool flag;
     private void Start()
     {
