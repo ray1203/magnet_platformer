@@ -1039,6 +1039,14 @@ PrefabInstance:
       propertyPath: attachedObj
       value: 
       objectReference: {fileID: 1992147422}
+    - target: {fileID: 1506920893656441288, guid: cab037ad4b48aa5439afaea9f74d91e9, type: 3}
+      propertyPath: attachedObjs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506920893656441288, guid: cab037ad4b48aa5439afaea9f74d91e9, type: 3}
+      propertyPath: attachedObjs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1992147422}
     - target: {fileID: 1506920893656441302, guid: cab037ad4b48aa5439afaea9f74d91e9, type: 3}
       propertyPath: m_Name
       value: Button

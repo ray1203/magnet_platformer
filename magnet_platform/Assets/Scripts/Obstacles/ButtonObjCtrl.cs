@@ -19,21 +19,10 @@ public class ButtonObjCtrl : MonoBehaviour
         
         for(int i = 0; i < attachedObjs.Count; i++)
         {
-            ButtonData buttonData = new ButtonData();
-            buttonData.objSprite = attachedObjs[i].GetComponent<SpriteRenderer>();
-            if (attachedObjs[i].TryGetComponent<MagnetCtrl>(out MagnetCtrl magnetCtrl))
-            {
-                buttonData.setting = ButtonData.ButtonSetting.magnet;
-                buttonData.magnetCtrl = magnetCtrl;
-                buttonData.magnetism = magnetCtrl.magnetism;
-                
-            }else if (attachedObjs[i].TryGetComponent<ButtonGate>(out ButtonGate buttonGate))
-            {
-                buttonData.setting = ButtonData.ButtonSetting.gate;
-                buttonData.buttonGate = buttonGate;
-            }
-            buttonData.SetFunc();
-            buttonDatas.Add(buttonData);
+            if (attachedObjs[i].TryGetComponent<SpawnObjects>(out SpawnObjects spawnObj))
+                for(int j = 0; j < attachedObjs[i].transform.childCount;j++)
+                    buttonDatas.Add(new ButtonData(spawnObj.transform.GetChild(j).gameObject));
+            else buttonDatas.Add(new ButtonData(attachedObjs[i]));
         }
         
     }
@@ -76,6 +65,25 @@ public class ButtonData
     public MagnetCtrl magnetCtrl;
     public char magnetism;
     public ButtonGate buttonGate;
+    public ButtonData()
+    {
+
+    }
+    public ButtonData(GameObject attachedObj)
+    {
+        objSprite = attachedObj.GetComponent<SpriteRenderer>();
+        if (attachedObj.TryGetComponent<MagnetCtrl>(out magnetCtrl))
+        {
+            setting = ButtonData.ButtonSetting.magnet;
+            magnetism = magnetCtrl.magnetism;
+
+        }
+        else if (attachedObj.TryGetComponent<ButtonGate>(out buttonGate))
+        {
+            setting = ButtonData.ButtonSetting.gate;
+        }
+        SetFunc();
+    }
     public void SetFunc()
     {
         if (setting == ButtonSetting.magnet)
