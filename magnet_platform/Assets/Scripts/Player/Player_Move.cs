@@ -11,6 +11,8 @@ public class Player_Move : MonoBehaviour
     [SerializeField]
     private float maxSpeed;
     [SerializeField]
+    private float DashSpeed;
+    [SerializeField]
     private float jumpPower;
     //플레이어 하단의 블럭을 끌어당기면서 점프하면 무한점프 되는 문제 해결용
     private List<Transform> bottomBlocks = new List<Transform>();
@@ -70,11 +72,17 @@ public class Player_Move : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
 
         rigid.AddForce(Vector2.right * h, ForceMode2D.Impulse);
-
-        if (rigid.velocity.x > maxSpeed)
-            rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
-        else if (rigid.velocity.x < maxSpeed * (-1))
-            rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
+        float DashMaxSpeed = maxSpeed;
+        anim.speed = 1;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            DashMaxSpeed = DashSpeed * maxSpeed;
+            anim.speed = DashSpeed;
+        }
+        if (rigid.velocity.x > DashMaxSpeed)
+            rigid.velocity = new Vector2(DashMaxSpeed, rigid.velocity.y);
+        else if (rigid.velocity.x < DashMaxSpeed * (-1))
+            rigid.velocity = new Vector2(DashMaxSpeed * (-1), rigid.velocity.y);
 
         if (rigid.velocity.y < 0)
         {

@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 8
+  DashSpeed: 1.7
   jumpPower: 15
 --- !u!114 &6285868355893302815
 MonoBehaviour:
