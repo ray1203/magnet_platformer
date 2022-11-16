@@ -28,7 +28,7 @@ public class MagnetCtrl : MonoBehaviour
         //this.transform.position = new Vector2(newX*Time.deltaTime,newY*Time.deltaTime);
     }
 
-    public void deleteMagnet()
+    public void DeleteMagnet()
     {
         
         List<MagnetCtrl> magnetCtrls = GameObject.Find("GameManager").GetComponent<MagnetManager>().magnetCtrls;

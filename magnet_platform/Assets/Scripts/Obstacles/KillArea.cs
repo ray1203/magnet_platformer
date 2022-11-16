@@ -13,7 +13,18 @@ public class KillArea : MonoBehaviour
         }
         if(collision.CompareTag("Block"))
         {
-            collision.gameObject.GetComponent<MagnetCtrl>().deleteMagnet();
+            collision.gameObject.GetComponent<MagnetCtrl>().DeleteMagnet();
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            GameManager.instance.GameOver();
+        }
+        if (collision.transform.CompareTag("Block"))
+        {
+            collision.gameObject.GetComponent<MagnetCtrl>().DeleteMagnet();
         }
     }
 }
