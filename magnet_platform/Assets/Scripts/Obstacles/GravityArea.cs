@@ -10,7 +10,8 @@ public class GravityArea : MonoBehaviour
         if(collision.TryGetComponent<Rigidbody2D>(out Rigidbody2D rigid)){
             rigid.gravityScale *= amount;
             rigid.mass *= amount;
-            GameManager.instance.playerMove.MultiplyJumpPower(amount);
+            if(collision.CompareTag("Player"))
+                GameManager.instance.playerMove.MultiplyJumpPower(amount);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -19,7 +20,8 @@ public class GravityArea : MonoBehaviour
         {
             rigid.gravityScale /= amount;
             rigid.mass /= amount;
-            GameManager.instance.playerMove.MultiplyJumpPower(1.0f/amount);
+            if (collision.CompareTag("Player"))
+                GameManager.instance.playerMove.MultiplyJumpPower(1.0f/amount);
         }
     }
 }
