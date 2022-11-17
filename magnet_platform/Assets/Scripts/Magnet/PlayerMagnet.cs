@@ -58,10 +58,12 @@ public class PlayerMagnet : MonoBehaviour
     }
     private void MouseInput()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 norm = ((Vector2)transform.position - mousePos).normalized;
+            // Vector2 norm = ((Vector2)transform.position - mousePos).normalized;
+            Vector2 center = Camera.main.ScreenToWorldPoint(new Vector2(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2));
+            Vector2 norm = (center - mousePos).normalized;
             Vector2 dir = dirs[0];
             for (int i = 1; i < 4; i++)
                 if (Vector2.Distance(norm, dirs[i]) > Vector2.Distance(norm, dir))
@@ -71,6 +73,10 @@ public class PlayerMagnet : MonoBehaviour
             else if (dir == Vector2.right) magnetDir = 0f;
             else if (dir == Vector2.up) magnetDir = 90f;
             else if (dir == Vector2.down) magnetDir = 270f;
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            
             active = true;
             playerOutline.outlineSize = 1;
             armOutline.outlineSize = 1;
