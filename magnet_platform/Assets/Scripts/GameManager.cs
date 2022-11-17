@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public PlayerMagnet playerMagnet;
     public MagnetCtrl playerMagnetCtrl;
     public PlayerManager playerManager;
+    public Player_Move playerMove;
     public List<KeyCtrl> keys = new List<KeyCtrl>();
     public int collectionCount = 0;
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
         playerMagnetCtrl = player.GetComponent<MagnetCtrl>();
         playerRigid = player.GetComponent<Rigidbody2D>();
         playerManager = player.GetComponent<PlayerManager>();
+        playerMove = player.GetComponent<Player_Move>();
     }
     private void Start()
     {

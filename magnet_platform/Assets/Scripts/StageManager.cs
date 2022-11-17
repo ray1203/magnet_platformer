@@ -9,7 +9,7 @@ public class StageManager : MonoBehaviour
     public static StageManager instance;
     public List<int> stages = new List<int>();
     private List<string> stageNames = new List<string>() {
-    "ray_stage1",
+    "Stage1-1",
     "",
     "",
     "",

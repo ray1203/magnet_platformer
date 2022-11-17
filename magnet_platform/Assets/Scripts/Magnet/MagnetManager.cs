@@ -7,12 +7,14 @@ public class MagnetManager : MonoBehaviour
 {
     public List<MagnetCtrl> magnetCtrls = new List<MagnetCtrl>();
     public float maxVal = 5000.0f;
+    PlayerManager playerManager;
     PlayerMagnet playerMagnet;
     // Start is called before the first frame update
     void Start()
     {
         magnetCtrls =  new List<MagnetCtrl>(GameObject.FindObjectsOfType<MagnetCtrl>());
         playerMagnet = GameManager.instance.playerMagnet;
+        playerManager = GameManager.instance.playerManager;
     }
 
     // Update is called once per frame

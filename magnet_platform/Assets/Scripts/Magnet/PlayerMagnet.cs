@@ -28,30 +28,9 @@ public class PlayerMagnet : MonoBehaviour
     }
     private void Update()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 norm = ((Vector2)transform.position - mousePos).normalized;
-        Vector2 dir = dirs[0];
-        for (int i = 1; i < 4; i++)
-            if (Vector2.Distance(norm, dirs[i]) > Vector2.Distance(norm, dir))
-                dir = dirs[i];
 
-        if (dir == Vector2.left)magnetDir = 180f;
-        else if (dir == Vector2.right)magnetDir = 0f;
-        else if (dir == Vector2.up)magnetDir = 90f;
-        else if (dir == Vector2.down)magnetDir = 270f;
-        if (Input.GetMouseButtonDown(0))
-        {
-            active = true;
-            playerOutline.outlineSize = 1;
-            armOutline.outlineSize = 1;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            active = false;
-            playerOutline.outlineSize = 0;
-            armOutline.outlineSize = 0;
-        }
-
+        MouseInput();
+        KeyInput();
         if (player.transform.localScale.x > 0)
         {
             transform.rotation = Quaternion.Euler(0f, 0f, magnetDir);
@@ -77,11 +56,67 @@ public class PlayerMagnet : MonoBehaviour
             magnetCtrls.Remove(magnetCtrl);
         }
     }
-    public bool Find(MagnetCtrl magnetCtrl)
+    private void MouseInput()
     {
-        foreach (var i in magnetCtrls)
-            if(i == magnetCtrl) return true;
-        return false;
-    }
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 norm = ((Vector2)transform.position - mousePos).normalized;
+            Vector2 dir = dirs[0];
+            for (int i = 1; i < 4; i++)
+                if (Vector2.Distance(norm, dirs[i]) > Vector2.Distance(norm, dir))
+                    dir = dirs[i];
 
+            if (dir == Vector2.left) magnetDir = 180f;
+            else if (dir == Vector2.right) magnetDir = 0f;
+            else if (dir == Vector2.up) magnetDir = 90f;
+            else if (dir == Vector2.down) magnetDir = 270f;
+            active = true;
+            playerOutline.outlineSize = 1;
+            armOutline.outlineSize = 1;
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            active = false;
+            playerOutline.outlineSize = 0;
+            armOutline.outlineSize = 0;
+        }
+    }
+    private void KeyInput()
+    {
+        if(Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            active = false;
+            playerOutline.outlineSize = 0;
+            armOutline.outlineSize = 0;
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            active = true;
+            playerOutline.outlineSize = 1;
+            armOutline.outlineSize = 1;
+            magnetDir = 180f;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            active = true;
+            playerOutline.outlineSize = 1;
+            armOutline.outlineSize = 1;
+            magnetDir = 0f;
+        }
+        else if (Input.GetKey(KeyCode.UpArrow))
+        {
+            active = true;
+            playerOutline.outlineSize = 1;
+            armOutline.outlineSize = 1;
+            magnetDir = 90f;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            active = true;
+            playerOutline.outlineSize = 1;
+            armOutline.outlineSize = 1;
+            magnetDir = 270f;
+        }
+    }
 }

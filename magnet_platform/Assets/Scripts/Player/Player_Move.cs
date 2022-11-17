@@ -14,6 +14,7 @@ public class Player_Move : MonoBehaviour
     private float DashSpeed;
     [SerializeField]
     private float jumpPower;
+    
     private List<Transform> bottomBlocks = new List<Transform>();
     private GameObject player;
     private PlayerMagnet playerMagnet;
@@ -106,4 +107,9 @@ public class Player_Move : MonoBehaviour
                     if (i.transform.TryGetComponent<Rigidbody2D>(out Rigidbody2D rgbd))
                         rgbd.AddForce(force * rgbd.mass / playerManager.rgbd.mass, ForceMode2D.Impulse);
     }
+    public void MultiplyJumpPower(float amount)
+    {
+        jumpPower *= amount;
+    }
+
 }
