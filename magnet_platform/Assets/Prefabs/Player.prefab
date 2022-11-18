@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magnetism: 0
-  magnetPower: 1000
+  magnetPower: 200
   power: {x: 0, y: 0}
 --- !u!114 &2390854206047095590
 MonoBehaviour:
