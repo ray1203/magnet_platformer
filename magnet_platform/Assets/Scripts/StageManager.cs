@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {
+    private bool stageChanging = false;
     public static StageManager instance;
     public List<int> stages = new List<int>();
     private List<string> stageNames = new List<string>() {
     "Stage1-1",
-    "",
-    "",
-    "",
+    "ray_stage2",
+    "ray_stage1",
+    "ray_stage3",
     "",
     };
     public int currentStage = -1;
@@ -37,6 +38,9 @@ public class StageManager : MonoBehaviour
     }
     public void StageClear()
     {
+        if (stageChanging) return;
+        Debug.Log("stageclear:" + currentStage);
+        stageChanging = true;
         if (currentStage == -1)
         {
             SceneManager.LoadScene("StageSelect");
@@ -46,6 +50,7 @@ public class StageManager : MonoBehaviour
         if (stages[currentStage] < amount) stages[currentStage] = amount;
         SaveData();
         if(!MoveStage(currentStage + 1))SceneManager.LoadScene("StageSelect");
+        stageChanging = false;
     }
     private void SaveData()
     {

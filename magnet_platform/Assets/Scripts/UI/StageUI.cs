@@ -25,6 +25,7 @@ public class StageUI : MonoBehaviour
                 if (lastStage == -1) lastStage = i;
                 else
                 {
+                    stages.GetChild(i).GetComponent<Button>().onClick.AddListener(delegate { StageManager.instance._MoveStage(i); });
                     stages.GetChild(i).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f);
                     for(int j = 0; j < 3; j++)
                     {
