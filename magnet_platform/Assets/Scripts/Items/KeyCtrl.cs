@@ -8,7 +8,6 @@ public class KeyCtrl : MonoBehaviour
     private bool followPlayer = false;
     private float distance = 1f;
     private float speed = 2f;
-    float t = 0f;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

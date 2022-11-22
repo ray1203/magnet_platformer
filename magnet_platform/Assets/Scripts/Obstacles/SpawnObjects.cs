@@ -8,11 +8,26 @@ public class SpawnObjects : MonoBehaviour
     List<GameObject> objList = new List<GameObject>();
     [SerializeField]
     int count = 1;
-    
+    private bool combineCol = true;
     public void Awake()
     {
         if (objList.Count == 0) return;
-        for(int i = objList.Count; i < count; i++)
+        for(int i = 0; i < objList.Count; i++)
+        {
+            if (!objList[i].CompareTag("Block")) { combineCol = false; break; }
+            Rigidbody2D rb = objList[i].GetComponent<Rigidbody2D>();
+            if (rb.constraints != RigidbodyConstraints2D.FreezeAll && rb.bodyType != RigidbodyType2D.Static) { combineCol = false; break; }
+
+        }
+        if (combineCol)
+        {
+            for (int i = 0; i < objList.Count; i++)
+                objList[i].GetComponent<BoxCollider2D>().size = new Vector2(0.95f, 0.95f);
+            BoxCollider2D box = gameObject.AddComponent<BoxCollider2D>();
+            box.size = new Vector2(count, 1);
+            box.offset = new Vector2((float)(count-1)/2.0f, 0);
+        }
+        for (int i = objList.Count; i < count; i++)
         {
             GameObject newObj = GameObject.Instantiate(objList[i%objList.Count], transform);
             newObj.transform.localPosition = new Vector2(i, 0);
