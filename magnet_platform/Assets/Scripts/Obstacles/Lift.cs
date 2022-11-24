@@ -17,7 +17,7 @@ public class Lift : MonoBehaviour
     void FixedUpdate()
     {
         transform.position = Vector2.MoveTowards(transform.position, desPos, Time.deltaTime * speed);
-
+        transform.position = new Vector3(transform.position.x, transform.position.y, startPos.z);
         if (Vector2.Distance(transform.position, desPos) <= 0.05f)
         {
             if (desPos == endPos) desPos = startPos;

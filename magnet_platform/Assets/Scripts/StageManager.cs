@@ -41,6 +41,7 @@ public class StageManager : MonoBehaviour
         if (stageChanging) return;
         Debug.Log("stageclear:" + currentStage);
         stageChanging = true;
+        GameManager.instance.godMod = true;
         if (currentStage == -1)
         {
             GameManager.instance.fadeEffect.FadeOut();

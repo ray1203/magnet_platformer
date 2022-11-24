@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public FadeEffect fadeEffect;
     public List<KeyCtrl> keys = new List<KeyCtrl>();
     public int collectionCount = 0;
+    public bool godMod = false;
     // Start is called before the first frame update
     void Awake()
     {
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
+        if (godMod) return;
         GameObject newObject = Instantiate(playerDieEffect);
         newObject.transform.position = player.transform.position;
         player.SetActive(false);
