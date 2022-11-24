@@ -29,7 +29,6 @@ public class LaserPointer : MonoBehaviour
     void Update()
     {
         dir = Rotate(Vector2.right, transform.eulerAngles.z / 180.0f * Mathf.PI).normalized;
-        Debug.Log(dir);
         RaycastHit2D rayHit = Physics2D.Raycast(laser.transform.position, dir, 100f, LayerMask.GetMask("Platform"));
         RaycastHit2D rayHitP = Physics2D.Raycast(laser.transform.position, dir, 100f, LayerMask.GetMask("Player"));
         if (!rayHit&&rayHitP||rayHit&&rayHitP&&rayHitP.distance < rayHit.distance) GameManager.instance.GameOver();

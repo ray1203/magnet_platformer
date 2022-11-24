@@ -112,4 +112,10 @@ public class Player_Move : MonoBehaviour
         jumpPower *= amount;
     }
 
+    public void StopMovement()
+    {
+        maxSpeed = 0;
+        DashSpeed = 0;
+        jumpPower = 0;
+    }
 }

@@ -2474,7 +2474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8936135291964414815, guid: 42544e027de171a47896864143b2050a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.5
+      value: 5.7
       objectReference: {fileID: 0}
     - target: {fileID: 8936135291964414815, guid: 42544e027de171a47896864143b2050a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3009,6 +3009,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5968360924493347969, guid: 2a85d4cc9212b1a44a7f41a61d4d0d72, type: 3}
+      propertyPath: fadeCanvas
+      value: 
+      objectReference: {fileID: 7468323605104839894, guid: d7990e4cf8e024c479b9b3fdce08cfd3, type: 3}
     - target: {fileID: 5968360924493347970, guid: 2a85d4cc9212b1a44a7f41a61d4d0d72, type: 3}
       propertyPath: m_Name
       value: GameManager

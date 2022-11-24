@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {
-    private bool stageChanging = false;
+    public bool stageChanging = false;
     public static StageManager instance;
     public List<int> stages = new List<int>();
     private List<string> stageNames = new List<string>() {
@@ -43,14 +43,16 @@ public class StageManager : MonoBehaviour
         stageChanging = true;
         if (currentStage == -1)
         {
-            SceneManager.LoadScene("StageSelect");
+            GameManager.instance.fadeEffect.FadeOut();
+            //SceneManager.LoadScene("StageSelect");
             return;
         }
         int amount = GameManager.instance.collectionCount+1;
         if (stages[currentStage] < amount) stages[currentStage] = amount;
         SaveData();
-        if(!MoveStage(currentStage + 1))SceneManager.LoadScene("StageSelect");
-        stageChanging = false;
+        
+        GameManager.instance.fadeEffect.FadeOut();
+        //if(!MoveStage(currentStage + 1))SceneManager.LoadScene("StageSelect");
     }
     private void SaveData()
     {
