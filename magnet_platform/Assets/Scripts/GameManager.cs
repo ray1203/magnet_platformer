@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public MagnetCtrl playerMagnetCtrl;
     public PlayerManager playerManager;
     public Player_Move playerMove;
+    public GameObject playerDieEffect;
     public List<KeyCtrl> keys = new List<KeyCtrl>();
     public int collectionCount = 0;
     // Start is called before the first frame update
@@ -35,6 +36,13 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
+        GameObject newObject = Instantiate(playerDieEffect);
+        newObject.transform.position = player.transform.position;
+        player.SetActive(false);
+    }
+    public void Restart()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 }
