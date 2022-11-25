@@ -47,4 +47,11 @@ public class LaserPointer : MonoBehaviour
 
         }
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        
+        dir = Rotate(Vector2.right, transform.eulerAngles.z / 180.0f * Mathf.PI).normalized;
+        Gizmos.DrawLine(transform.position, transform.position + dir);
+    }
 }
