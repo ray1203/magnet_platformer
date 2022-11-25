@@ -66,10 +66,11 @@ MonoBehaviour:
   playerManager: {fileID: 0}
   playerMove: {fileID: 0}
   playerDieEffect: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
-  fadeCanvas: {fileID: 7468323605104839894, guid: d7990e4cf8e024c479b9b3fdce08cfd3, type: 3}
+  fadeCanvas: {fileID: 5859749124149527718, guid: 50d313aa93adc144bafb1a9c1c8e75f2, type: 3}
   fadeEffect: {fileID: 0}
   keys: []
   collectionCount: 0
+  godMod: 0
 --- !u!114 &1438375530307687170
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -112,5 +112,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c855a2b76ac964abae8d0b2722ca5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UiDirector: {fileID: 0}
+  canvasManager: {fileID: 0}
   text: ">[Space]\uB97C \uB20C\uB7EC \uC810\uD504 \uD560 \uC218 \uC788\uB2E4."

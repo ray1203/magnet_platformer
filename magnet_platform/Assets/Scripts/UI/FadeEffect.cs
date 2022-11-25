@@ -7,13 +7,17 @@ using UnityEngine.UI;
 public class FadeEffect : MonoBehaviour
 {
     public float fadeSpeed = 0.5f;
-    private Image image;
+    public Image image;
     int flag = 0;
     float a = 1.0f;
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         image = GetComponent<Image>();
+    }
+    void Start()
+    {
         FadeIn();
         StageManager.instance.stageChanging = false;
     }
@@ -30,6 +34,7 @@ public class FadeEffect : MonoBehaviour
                 flag = -1;
                 a = 0.0f;
             }
+
             image.color = new Color(0, 0, 0, a);
         }
         //FadeOut
@@ -44,6 +49,7 @@ public class FadeEffect : MonoBehaviour
                     !StageManager.instance.MoveStage(StageManager.instance.currentStage + 1)) 
                     SceneManager.LoadScene("StageSelect");
             }
+
             image.color = new Color(0, 0, 0, a);
         }
     }

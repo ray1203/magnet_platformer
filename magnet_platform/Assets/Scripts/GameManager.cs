@@ -28,19 +28,20 @@ public class GameManager : MonoBehaviour
         playerRigid = player.GetComponent<Rigidbody2D>();
         playerManager = player.GetComponent<PlayerManager>();
         playerMove = player.GetComponent<Player_Move>();
-        fadeCanvas = Instantiate(fadeCanvas);
-    }
-    private void Start()
-    {
-        fadeEffect = fadeCanvas.transform.GetComponentInChildren<FadeEffect>();
+        fadeCanvas = GameObject.Find("Canvas");
         if (StageManager.instance == null)
         {
             GameObject stageManager = Instantiate(new GameObject("StageManager"));
             stageManager.AddComponent<StageManager>();
         }
     }
+    private void Start()
+    {
+        fadeEffect = fadeCanvas.transform.GetComponentInChildren<FadeEffect>();
+    }
     public void GameOver()
     {
+        Time.timeScale = 1;
         if (godMod) return;
         GameObject newObject = Instantiate(playerDieEffect);
         newObject.transform.position = player.transform.position;
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
     }
     public void Restart()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }

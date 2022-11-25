@@ -14,6 +14,7 @@ public class PlayerMagnet : MonoBehaviour
     private GameObject player;
     private SpriteOutline armOutline;
     private SpriteOutline playerOutline;
+    private AudioSource audioSource;
     private void Start()
     {
         dirs.Add(Vector2.left);
@@ -25,6 +26,7 @@ public class PlayerMagnet : MonoBehaviour
 
         armOutline = arm.GetComponent<SpriteOutline>();
         playerOutline = player.GetComponent<SpriteOutline>();
+        audioSource = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -76,7 +78,6 @@ public class PlayerMagnet : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            
             active = true;
             playerOutline.outlineSize = 1;
             armOutline.outlineSize = 1;

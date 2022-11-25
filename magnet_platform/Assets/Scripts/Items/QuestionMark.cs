@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class QuestionMark : MonoBehaviour
 {
-    public StageText UiDirector;
+    public CanvasManager canvasManager;
     public string text;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            UiDirector.Write(text, 28, 3f);
+            canvasManager.Write(text, 28, 3f);
             Destroy(this.gameObject);
         }
     }

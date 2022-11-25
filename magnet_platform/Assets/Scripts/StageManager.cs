@@ -32,10 +32,6 @@ public class StageManager : MonoBehaviour
             StrToData(PlayerPrefs.GetString("stage"));
         }
     }
-    private void Start()
-    {
-        
-    }
     public void StageClear()
     {
         if (stageChanging) return;
