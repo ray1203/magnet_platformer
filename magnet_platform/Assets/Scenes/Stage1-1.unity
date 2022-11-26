@@ -811,7 +811,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2390854206047095590, guid: 4d676e64b18e41a47b19add3acb1d9db, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4d676e64b18e41a47b19add3acb1d9db, type: 3}
 --- !u!1 &326875293 stripped
 GameObject:
@@ -28589,7 +28590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3320414931725904189, guid: 909c81a0fd92cf24589257dff0299847, type: 3}
       propertyPath: m_PlayOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3320414931725904190, guid: 909c81a0fd92cf24589257dff0299847, type: 3}
       propertyPath: m_RootOrder

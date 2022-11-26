@@ -82,25 +82,27 @@ public class Player_Move : MonoBehaviour
             rigid.velocity = new Vector2(DashMaxSpeed * (-1), rigid.velocity.y);
 
 
-
-        Debug.DrawRay(rigid.position, 0.2f * Vector3.down, new Color(0, 1, 0));
-        Debug.DrawRay(rigid.position + new Vector2(0.4f, 0), 0.2f * Vector3.down, new Color(0, 1, 0));
-        Debug.DrawRay(rigid.position - new Vector2(0.4f, 0), 0.2f * Vector3.down, new Color(0, 1, 0));
-
-
-        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 0.2f, LayerMask.GetMask("Platform"));
-        RaycastHit2D rayHitL = Physics2D.Raycast(rigid.position - new Vector2(0.4f, 0), Vector3.down, 0.2f, LayerMask.GetMask("Platform"));
-        RaycastHit2D rayHitR = Physics2D.Raycast(rigid.position + new Vector2(0.4f, 0), Vector3.down, 0.2f, LayerMask.GetMask("Platform"));
-        if (rayHit.collider != null || rayHitL.collider != null || rayHitR.collider != null)
+        if (rigid.velocity.y < 0)
         {
-            if (Input.GetButton("Horizontal"))
-                walkSound();
-            bottomBlocks.Clear();
-            if (rayHit.collider != null && !bottomBlocks.Contains(rayHit.transform)) bottomBlocks.Add(rayHit.transform);
-            if (rayHitL.collider != null && !bottomBlocks.Contains(rayHitL.transform)) bottomBlocks.Add(rayHitL.transform);
-            if (rayHitR.collider != null && !bottomBlocks.Contains(rayHitR.transform)) bottomBlocks.Add(rayHitR.transform);
-            if(rigid.velocity.y < 0)
+            Debug.DrawRay(rigid.position, 0.2f * Vector3.down, new Color(0, 1, 0));
+            Debug.DrawRay(rigid.position + new Vector2(0.4f, 0), 0.2f * Vector3.down, new Color(0, 1, 0));
+            Debug.DrawRay(rigid.position - new Vector2(0.4f, 0), 0.2f * Vector3.down, new Color(0, 1, 0));
+
+
+            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 0.2f, LayerMask.GetMask("Platform"));
+            RaycastHit2D rayHitL = Physics2D.Raycast(rigid.position - new Vector2(0.4f, 0), Vector3.down, 0.2f, LayerMask.GetMask("Platform"));
+            RaycastHit2D rayHitR = Physics2D.Raycast(rigid.position + new Vector2(0.4f, 0), Vector3.down, 0.2f, LayerMask.GetMask("Platform"));
+            if (rayHit.collider != null || rayHitL.collider != null || rayHitR.collider != null)
+            {
+                if (Input.GetButton("Horizontal"))
+                    walkSound();
+                bottomBlocks.Clear();
+                if (rayHit.collider != null && !bottomBlocks.Contains(rayHit.transform)) bottomBlocks.Add(rayHit.transform);
+                if (rayHitL.collider != null && !bottomBlocks.Contains(rayHitL.transform)) bottomBlocks.Add(rayHitL.transform);
+                if (rayHitR.collider != null && !bottomBlocks.Contains(rayHitR.transform)) bottomBlocks.Add(rayHitR.transform);
+                //if (rigid.velocity.y < 0)
                 anim.SetBool("IsJumping", false);
+            }
         }
     }
     void AddForceToBlock(Vector2 force)

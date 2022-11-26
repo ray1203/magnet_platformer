@@ -31,7 +31,7 @@ public class PlayerMagnet : MonoBehaviour
     private void Update()
     {
 
-        MouseInput();
+        //MouseInput();
         KeyInput();
         if (player.transform.localScale.x > 0)
         {
@@ -78,6 +78,8 @@ public class PlayerMagnet : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
+            if (GameManager.instance.playerMagnetCtrl.magnetism == 'N' || GameManager.instance.playerMagnetCtrl.magnetism == 'S')
+                audioSource.Play();
             active = true;
             playerOutline.outlineSize = 1;
             armOutline.outlineSize = 1;
@@ -91,11 +93,18 @@ public class PlayerMagnet : MonoBehaviour
     }
     private void KeyInput()
     {
-        if(Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+            if (GameManager.instance.playerMagnetCtrl.magnetism == 'N' || GameManager.instance.playerMagnetCtrl.magnetism == 'S')
+                audioSource.Play();
+        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
         {
             active = false;
             playerOutline.outlineSize = 0;
             armOutline.outlineSize = 0;
+            if (player.transform.localScale.x < 0)
+                magnetDir = 180f;
+            else
+                magnetDir = 0f;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {

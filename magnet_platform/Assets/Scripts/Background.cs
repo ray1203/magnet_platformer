@@ -6,6 +6,8 @@ public class Background : MonoBehaviour
 {
     private MeshRenderer render;
     private Vector2 offset;
+    public float x = 1f;
+    public float y = 1f;
     public float speed;
     // Start is called before the first frame update
     void Start()
@@ -16,7 +18,7 @@ public class Background : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        offset += Time.deltaTime * speed * new Vector2(1,1);
+        offset += Time.deltaTime * speed * new Vector2(x,y);
         render.material.mainTextureOffset = offset;
     }
 }

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7956823251152536597}
   - component: {fileID: 1900155960220891900}
-  - component: {fileID: 4862978625823173525}
   - component: {fileID: 7343707242143675313}
   m_Layer: 0
   m_Name: Arm
@@ -84,20 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4862978625823173525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1171323011000267812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e6f555c992cdee42a270bde47c67859, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magnetCtrls: []
-  active: 0
 --- !u!114 &7343707242143675313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +109,6 @@ GameObject:
   - component: {fileID: 1907863616422286450}
   - component: {fileID: 1907863616422286453}
   - component: {fileID: 6285868355893302815}
-  - component: {fileID: 2390854206047095590}
   - component: {fileID: 1907863616422286414}
   - component: {fileID: 1907863616422286449}
   - component: {fileID: 1907863616422286448}
@@ -234,20 +218,6 @@ MonoBehaviour:
   magnetism: 0
   magnetPower: 200
   power: {x: 0, y: 0}
---- !u!114 &2390854206047095590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1907863616422286452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a9a09ed6225bef4eb8880a73971cb5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blocks: []
-  rgbd: {fileID: 0}
 --- !u!61 &1907863616422286414
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -435,6 +405,7 @@ GameObject:
   - component: {fileID: 8550307918203261977}
   - component: {fileID: 7395278432865262030}
   - component: {fileID: 6889884867049342108}
+  - component: {fileID: 8594723598219813871}
   m_Layer: 7
   m_Name: Magnet
   m_TagString: Untagged
@@ -496,3 +467,99 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnetCtrls: []
   active: 0
+--- !u!82 &8594723598219813871
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7215131006158900709}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 50e7250cb23b5c143b6daa6963cbe69d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
