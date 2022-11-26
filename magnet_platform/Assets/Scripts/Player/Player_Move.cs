@@ -7,6 +7,7 @@ public class Player_Move : MonoBehaviour
     Animator anim;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
+    AudioSource audioSource;
 
     [SerializeField]
     private float maxSpeed;
@@ -19,11 +20,13 @@ public class Player_Move : MonoBehaviour
     private GameObject player;
     private PlayerMagnet playerMagnet;
     private PlayerManager playerManager;
+    private float walKSoundCool = 0;
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
     private void Start()
     {
@@ -79,24 +82,25 @@ public class Player_Move : MonoBehaviour
             rigid.velocity = new Vector2(DashMaxSpeed * (-1), rigid.velocity.y);
 
 
-        if (rigid.velocity.y < 0)
+
+        Debug.DrawRay(rigid.position, 0.2f * Vector3.down, new Color(0, 1, 0));
+        Debug.DrawRay(rigid.position + new Vector2(0.4f, 0), 0.2f * Vector3.down, new Color(0, 1, 0));
+        Debug.DrawRay(rigid.position - new Vector2(0.4f, 0), 0.2f * Vector3.down, new Color(0, 1, 0));
+
+
+        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 0.2f, LayerMask.GetMask("Platform"));
+        RaycastHit2D rayHitL = Physics2D.Raycast(rigid.position - new Vector2(0.4f, 0), Vector3.down, 0.2f, LayerMask.GetMask("Platform"));
+        RaycastHit2D rayHitR = Physics2D.Raycast(rigid.position + new Vector2(0.4f, 0), Vector3.down, 0.2f, LayerMask.GetMask("Platform"));
+        if (rayHit.collider != null || rayHitL.collider != null || rayHitR.collider != null)
         {
-            Debug.DrawRay(rigid.position, 0.2f * Vector3.down, new Color(0, 1, 0));
-            Debug.DrawRay(rigid.position + new Vector2(0.4f, 0), 0.2f * Vector3.down, new Color(0, 1, 0));
-            Debug.DrawRay(rigid.position - new Vector2(0.4f, 0), 0.2f * Vector3.down, new Color(0, 1, 0));
-
-
-            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 0.2f, LayerMask.GetMask("Platform"));
-            RaycastHit2D rayHitL = Physics2D.Raycast(rigid.position - new Vector2(0.4f, 0), Vector3.down, 0.2f, LayerMask.GetMask("Platform"));
-            RaycastHit2D rayHitR = Physics2D.Raycast(rigid.position + new Vector2(0.4f, 0), Vector3.down, 0.2f, LayerMask.GetMask("Platform"));
-            if (rayHit.collider != null || rayHitL.collider != null || rayHitR.collider != null)
-            {
-                bottomBlocks.Clear();
-                if (rayHit.collider != null && !bottomBlocks.Contains(rayHit.transform)) bottomBlocks.Add(rayHit.transform);
-                if (rayHitL.collider != null && !bottomBlocks.Contains(rayHitL.transform)) bottomBlocks.Add(rayHitL.transform);
-                if (rayHitR.collider != null && !bottomBlocks.Contains(rayHitR.transform)) bottomBlocks.Add(rayHitR.transform);
+            if (Input.GetButton("Horizontal"))
+                walkSound();
+            bottomBlocks.Clear();
+            if (rayHit.collider != null && !bottomBlocks.Contains(rayHit.transform)) bottomBlocks.Add(rayHit.transform);
+            if (rayHitL.collider != null && !bottomBlocks.Contains(rayHitL.transform)) bottomBlocks.Add(rayHitL.transform);
+            if (rayHitR.collider != null && !bottomBlocks.Contains(rayHitR.transform)) bottomBlocks.Add(rayHitR.transform);
+            if(rigid.velocity.y < 0)
                 anim.SetBool("IsJumping", false);
-            }
         }
     }
     void AddForceToBlock(Vector2 force)
@@ -117,5 +121,15 @@ public class Player_Move : MonoBehaviour
         maxSpeed = 0;
         DashSpeed = 0;
         jumpPower = 0;
+    }
+
+    public void walkSound()
+    {
+        walKSoundCool += Time.deltaTime * anim.speed;
+        if (walKSoundCool >= 0.5f)
+        {
+            audioSource.Play();
+            walKSoundCool = 0;
+        }
     }
 }
