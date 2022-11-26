@@ -296,19 +296,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 447839193}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1338330260}
-        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: _MoveStage
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &512245919
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,19 +624,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 783288988}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1338330260}
-        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: _MoveStage
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1027155539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1050,6 +1026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc1453d520398c4a992cd12af2569f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageChanging: 0
   stages: 
   currentStage: -1
 --- !u!1001 &1717579880
@@ -1237,19 +1214,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1717579883}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1338330260}
-        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: _MoveStage
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1889295929 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5700929063750957680, guid: b9910cc3f6bf337499d558b0ada15486, type: 3}
@@ -1314,19 +1279,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1889295931}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1338330260}
-        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: _MoveStage
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: ray_stage1
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1001 &1923197666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1500,19 +1453,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1923197669}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1338330260}
-        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: _MoveStage
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1001 &5700929062936978505
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class StageUI : MonoBehaviour
 {
     public Transform stages;
-    private int lastStage=-1;
+    private int lastStage = -1;
     public Sprite filledStar;
     // Start is called before the first frame update
     void Start()
@@ -21,12 +21,16 @@ public class StageUI : MonoBehaviour
         {
             if (StageManager.instance.stages[i] == 0)
             {
-                if (lastStage == -1) lastStage = i;
+                if (lastStage == -1)
+                {
+                    lastStage = i;
+                    SetBtnListener(stages.GetChild(i).GetComponent<Button>(), i);
+                }
                 else
                 {
-                    stages.GetChild(i).GetComponent<Button>().onClick.AddListener(delegate { StageManager.instance._MoveStage(i); });
+
                     stages.GetChild(i).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f);
-                    for(int j = 0; j < 3; j++)
+                    for (int j = 0; j < 3; j++)
                     {
                         stages.GetChild(i).GetChild(j).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f);
                     }
@@ -35,10 +39,15 @@ public class StageUI : MonoBehaviour
             }
             else
             {
-                if (StageManager.instance.stages[i] >= 1)stages.GetChild(i).Find("Star1").GetComponent<Image>().sprite = filledStar;
-                if (StageManager.instance.stages[i] >= 2)stages.GetChild(i).Find("Star3").GetComponent<Image>().sprite = filledStar;
-                if (StageManager.instance.stages[i] >= 3)stages.GetChild(i).Find("Star2").GetComponent<Image>().sprite = filledStar;
+                SetBtnListener(stages.GetChild(i).GetComponent<Button>(), i);
+                if (StageManager.instance.stages[i] >= 1) stages.GetChild(i).Find("Star1").GetComponent<Image>().sprite = filledStar;
+                if (StageManager.instance.stages[i] >= 2) stages.GetChild(i).Find("Star3").GetComponent<Image>().sprite = filledStar;
+                if (StageManager.instance.stages[i] >= 3) stages.GetChild(i).Find("Star2").GetComponent<Image>().sprite = filledStar;
             }
         }
+    }
+    private void SetBtnListener(Button button, int t)
+    {
+        button.onClick.AddListener(delegate { StageManager._MoveStage(t); });
     }
 }

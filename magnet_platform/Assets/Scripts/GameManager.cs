@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        Time.timeScale = 1;
         instance = this;
         player = GameObject.FindWithTag("Player").gameObject;
         playerMagnet = player.GetComponentInChildren<PlayerMagnet>();
@@ -29,8 +30,9 @@ public class GameManager : MonoBehaviour
         playerManager = player.GetComponent<PlayerManager>();
         playerMove = player.GetComponent<Player_Move>();
         fadeCanvas = GameObject.Find("Canvas");
-        if (StageManager.instance == null)
+        if (StageManager.instance==null)
         {
+            Debug.Log("StageManager create");
             GameObject stageManager = Instantiate(new GameObject("StageManager"));
             stageManager.AddComponent<StageManager>();
         }

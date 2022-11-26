@@ -14,23 +14,26 @@ public class StageManager : MonoBehaviour
     "ray_stage2",
     "ray_stage1",
     "ray_stage3",
-    "",
+    "ray_stage4",
     };
     public int currentStage = -1;
     private void Awake()
     {
-        if (instance != null) Destroy(gameObject);
-        DontDestroyOnLoad(gameObject);
-        for (int i = 0; i < 5; i++) stages.Add(0);
-        instance = this;
-        if (!PlayerPrefs.HasKey("stage"))
+        if (instance == null)
         {
-            SaveData();
+            DontDestroyOnLoad(gameObject);
+            for (int i = 0; i < 5; i++) stages.Add(0);
+            instance = this;
+            if (!PlayerPrefs.HasKey("stage"))
+            {
+                SaveData();
+            }
+            else
+            {
+                StrToData(PlayerPrefs.GetString("stage"));
+            }
         }
-        else
-        {
-            StrToData(PlayerPrefs.GetString("stage"));
-        }
+        else Destroy(gameObject);
     }
     public void StageClear()
     {
@@ -80,9 +83,9 @@ public class StageManager : MonoBehaviour
         currentStage = stageNum;
         return true;
     }
-    public void _MoveStage(int stageNum)
+    public static void _MoveStage(int stageNum)
     {
-        MoveStage(stageNum);
+        StageManager.instance.MoveStage(stageNum);
     }
     public void ClearData()
     {
