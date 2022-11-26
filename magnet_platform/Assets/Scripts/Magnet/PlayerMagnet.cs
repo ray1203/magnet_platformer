@@ -94,17 +94,13 @@ public class PlayerMagnet : MonoBehaviour
     private void KeyInput()
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
-            if (GameManager.instance.playerMagnetCtrl.magnetism == 'N' || GameManager.instance.playerMagnetCtrl.magnetism == 'S')
+            if (GameManager.instance.playerMagnetCtrl.magnetism == 'n' || GameManager.instance.playerMagnetCtrl.magnetism == 's')
                 audioSource.Play();
         if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
         {
             active = false;
             playerOutline.outlineSize = 0;
             armOutline.outlineSize = 0;
-            if (player.transform.localScale.x < 0)
-                magnetDir = 180f;
-            else
-                magnetDir = 0f;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -133,6 +129,13 @@ public class PlayerMagnet : MonoBehaviour
             playerOutline.outlineSize = 1;
             armOutline.outlineSize = 1;
             magnetDir = 270f;
+        }
+        else
+        {
+            if (player.transform.localScale.x < 0)
+                magnetDir = 180f;
+            else
+                magnetDir = 0f;
         }
     }
 }
