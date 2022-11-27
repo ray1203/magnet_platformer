@@ -28,7 +28,6 @@ public class StageUI : MonoBehaviour
                 }
                 else
                 {
-
                     stages.GetChild(i).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f);
                     for (int j = 0; j < 3; j++)
                     {
