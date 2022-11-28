@@ -38,7 +38,8 @@ public class Lift : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player") || collision.transform.CompareTag("Block"))
         {
-            collision.transform.SetParent(null);
+            if(collision.gameObject.activeSelf == true)
+                collision.transform.SetParent(null);
         }
     }
 }
