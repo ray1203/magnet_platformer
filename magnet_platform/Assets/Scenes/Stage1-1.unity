@@ -2633,8 +2633,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7477971361501079218, guid: 2bce4baab454e2d46a40c6debb93ef65, type: 3}
       propertyPath: text
-      value: ">\uBC29\uD5A5\uD0A4 \uD639\uC740 \uB9C8\uC6B0\uC2A4 \uD074\uB9AD\uC73C\uB85C
-        \uC790\uB825\uC744 \uBC1C\uC0B0\uD560 \uC218 \uC788\uB2E4."
+      value: ">\uBC29\uD5A5\uD0A4\uB85C  \uC790\uB825\uC744 \uBC1C\uC0B0\uD560 \uC218
+        \uC788\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 7477971361501079218, guid: 2bce4baab454e2d46a40c6debb93ef65, type: 3}
       propertyPath: UiDirector
