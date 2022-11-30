@@ -11,10 +11,14 @@ public class StageManager : MonoBehaviour
     public List<int> stages = new List<int>();
     private List<string> stageNames = new List<string>() {
     "Stage1-1",
-    "ray_stage2",
-    "ray_stage1",
-    "ray_stage3",
-    "ray_stage4",
+    "Stage1-2",
+    "Stage1-3",
+    "StageSelect",
+    "Stage2-2",
+    "Stage2-n",
+    "StageSelect",
+    "Stage3-2",
+    "Stage3-3",
     };
     public int currentStage = -1;
     private void Awake()
@@ -22,7 +26,7 @@ public class StageManager : MonoBehaviour
         if (instance == null)
         {
             DontDestroyOnLoad(gameObject);
-            for (int i = 0; i < 5; i++) stages.Add(0);
+            for (int i = 0; i < stageNames.Count; i++) stages.Add(0);
             instance = this;
             if (!PlayerPrefs.HasKey("stage"))
             {
@@ -87,10 +91,11 @@ public class StageManager : MonoBehaviour
     {
         StageManager.instance.MoveStage(stageNum);
     }
-    public void ClearData()
+    public void ClearData(int num=0)
     {
-        for (int i = 0; i < stages.Count; i++) stages[i] = 0;
+        for (int i = 0; i < stages.Count; i++) stages[i] = num;
         SaveData();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    
 }

@@ -75,6 +75,7 @@ public class CanvasManager : MonoBehaviour
 
     public void SelectMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("StageSelect");
     }
 }
