@@ -23,6 +23,7 @@ public class StageManager : MonoBehaviour
     public int currentStage = -1;
     private void Awake()
     {
+        Screen.SetResolution(1920, 1080, true);
         if (instance == null)
         {
             DontDestroyOnLoad(gameObject);
